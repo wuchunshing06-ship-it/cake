@@ -130,8 +130,9 @@
     .composition {
       position: relative;
       display: flex;
+      flex-direction: column;
       align-items: flex-end;
-      justify-content: center;
+      justify-content: flex-end;
       width: min(92vw, 390px);
       height: 480px;
     }
@@ -531,6 +532,23 @@
       pointer-events: none;
     }
 
+    .cake-hint {
+      margin: 8px 0 0;
+      opacity: 0;
+      color: rgba(255, 246, 231, 0.68);
+      font-size: 13px;
+      line-height: 1.5;
+      letter-spacing: 0.16em;
+      text-align: center;
+      transform: translateY(8px);
+      pointer-events: none;
+      animation: hint-in 0.7s 0.9s ease forwards;
+    }
+
+    .scene.is-celebrating .cake-hint {
+      animation: hint-out 0.35s ease forwards;
+    }
+
     @keyframes cake-in {
       to {
         opacity: 1;
@@ -542,6 +560,24 @@
       to {
         opacity: 1;
         transform: translate(-50%, 0) scale(1);
+      }
+    }
+
+    @keyframes hint-in {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes hint-out {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(6px);
       }
     }
 
@@ -673,6 +709,8 @@
           <span class="plate"></span>
         </span>
       </button>
+
+      <p class="cake-hint">点击蛋糕 · 吹灭蜡烛</p>
     </div>
   </main>
 
